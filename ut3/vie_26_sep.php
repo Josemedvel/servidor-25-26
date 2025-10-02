@@ -92,3 +92,4 @@ echo $eleccion;
     <input type="submit" value="Enviar formulario">
     <!--<button type="submit"></button>-->
 </form>
+

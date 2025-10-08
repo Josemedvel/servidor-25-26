@@ -10,7 +10,7 @@ function fibonacci($num){
     }
 }
 echo fibonacci(5);
-
+$a = 5;
 echo "<br>";
 
 function suma($arr){

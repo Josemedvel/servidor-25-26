@@ -1,11 +1,11 @@
 <?php
 class User{
-public int $id;
-public ?string $name;
-public function __construct(int $id, ?string $name){
-$this->id = $id;
-$this->name = $name;
-}
+    public int $id;
+    public ?string $name;
+    public function __construct(int $id, ?string $name){
+        $this->id = $id;
+        $this->name = $name;
+    }
 
 public function conseguir_nombre() : string{
     return $this->name ?? "John";

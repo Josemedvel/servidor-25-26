@@ -1,6 +1,6 @@
 <?php
 class Conexion{
-    private string $destino = "mysql:host=localhost:3306;dbname=test;charset=utf8mb4"; // ajustad a vuestra base de datos
+    private string $destino = "mysql:host=localhost:3306;dbname=netflix;charset=utf8mb4"; // ajustad a vuestra base de datos
     private string $user = "root"; // ajustad a vuestra base de datos
     private string $password = "1234"; // ajustad a vuestra base de datos
     private PDO $conn;

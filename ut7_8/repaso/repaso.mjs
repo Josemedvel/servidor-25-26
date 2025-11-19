@@ -1,5 +1,3 @@
-"use strict"; // Activa el modo estricto
-
 import os from "os"
 //console.log(os.platform())
 
@@ -44,5 +42,5 @@ function cuentaAtras(segundos, callback){
     iterar()
 }
 
-cuentaAtras(3, saludo)
+cuentaAtras(2, ()=>console.log("explota"));
 

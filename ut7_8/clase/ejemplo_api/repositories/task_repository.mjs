@@ -14,6 +14,22 @@ async function crearPost(textoTarea){
     return result
 }
 
+async function buscarTareaPorId(id){
+    const client = await pool.connect()
+    let result = ""
+    try{
+        result = await client.query(`SELECT * FROM tareas WHERE id=${id}`)
+    }catch(err){
+        console.error("Error en la creación del post",err.message)
+        result = err.message
+    }finally{
+        client.release()
+    }
+    return result.rows
+}
+
+
 export default {
-    crearPost: crearPost
+    crearPost,
+    buscarTareaPorId
 }

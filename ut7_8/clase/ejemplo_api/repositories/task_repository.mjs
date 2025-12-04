@@ -28,6 +28,7 @@ async function buscarTareaPorId(id){
         client.release()
     }
     if(result.rows[0]){
+        console.log(result.rows[0])
         task = new Task(result.rows[0])
     }
     return task

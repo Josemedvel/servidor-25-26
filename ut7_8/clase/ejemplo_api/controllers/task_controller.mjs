@@ -29,6 +29,7 @@ async function buscarTareaPorId(req, res) {
             if (!tarea) {
                 res.status(500).send("Error en el repositorio: no se ha encontrado tareas con ese id")
             } else {
+                tarea.printBasico()
                 res.json(tarea)
             }
         }else{

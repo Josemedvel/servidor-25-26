@@ -1,4 +1,5 @@
 import pool from "../config/database.mjs"
+import { Task } from "../models/task_model.mjs"
 
 async function crearPost(textoTarea){
     const client = await pool.connect()
@@ -16,6 +17,7 @@ async function crearPost(textoTarea){
 
 async function buscarTareaPorId(id){
     const client = await pool.connect()
+    let task = undefined
     let result = ""
     try{
         result = await client.query(`SELECT * FROM tareas WHERE id=${id}`)
@@ -25,7 +27,10 @@ async function buscarTareaPorId(id){
     }finally{
         client.release()
     }
-    return result.rows
+    if(result.rows[0]){
+        task = new Task(result.rows[0])
+    }
+    return task
 }
 
 

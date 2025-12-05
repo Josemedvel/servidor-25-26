@@ -22,20 +22,40 @@ async function buscarTareaPorId(id){
     try{
         result = await client.query(`SELECT * FROM tareas WHERE id=${id}`)
     }catch(err){
-        console.error("Error en la creación del post",err.message)
+        console.error("Error en la búsqueda de la tarea",err.message)
         result = err.message
     }finally{
         client.release()
     }
-    if(result.rows[0]){
+    if(result && result.rows[0]){
         console.log(result.rows[0])
         task = new Task(result.rows[0])
     }
     return task
 }
 
+async function buscarTareas(){
+    const client = await pool.connect()
+    let tasks = undefined
+    let result = ""
+    try{
+        result = await client.query("SELECT * FROM tareas")
+    }catch(err){
+        console.error("Error en la búsqueda de las tareas",err.message)
+        result = err.message
+    }finally{
+        client.release()
+    }
+    if(result && result.rows){
+        tasks = result.rows.map((e) => new Task(e))
+    }
+    return tasks
+}
+
+
 
 export default {
     crearPost,
-    buscarTareaPorId
+    buscarTareaPorId,
+    buscarTareas
 }

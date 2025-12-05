@@ -7,7 +7,11 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(cors())
+const cors_config = {
+    method : ["POST", "PUT", "GET", "DELETE"],
+    origin: 'http://127.0.0.1:3001'
+ }
+app.use(cors(cors_config))
 app.use(rutasTask)
 
 

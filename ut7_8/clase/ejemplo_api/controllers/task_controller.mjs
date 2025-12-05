@@ -21,7 +21,7 @@ async function crearPost(req, res) {
 async function buscarTareaPorId(req, res) {
     const id = req.params.id
 
-    if (id && id.trim() != "") {
+    if (id && id.trim()) {
         const numId = Number(id)
         if (!isNaN(numId)) {
             const tarea = await RepoTask.buscarTareaPorId(numId)
@@ -40,8 +40,18 @@ async function buscarTareaPorId(req, res) {
     }
 }
 
+async function buscarTareas(req, res){
+    const resultado = await RepoTask.buscarTareas()
+    if(resultado){
+        res.json(resultado)
+    }else{
+        res.status(500).send("Error en el repositorio: no se ha encontrado tareas")
+    }
+}
+
 
     export default {
         crearPost,
-        buscarTareaPorId
+        buscarTareaPorId,
+        buscarTareas
     }

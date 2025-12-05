@@ -5,5 +5,6 @@ const router = new express.Router()
 
 router.post("/crear", taskController.crearPost)
 router.get("/buscar-por-id/:id", taskController.buscarTareaPorId)
+router.get("/tareas", taskController.buscarTareas)
 
 export default router

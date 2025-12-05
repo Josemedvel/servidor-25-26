@@ -28,6 +28,20 @@ class TaskController{
             res.status(500).send("Error al obtener la tarea")
         }
     }
+
+    buscarTareas = async (req, res) => {
+        try{
+            const datos = await this.client.get("/tareas")
+            if(datos.data){
+                res.render("tareas.ejs", {tareas: datos.data})
+            }else{
+                res.status(404).send("No se han encontrado tareas")
+            }
+        }catch(error){
+            console.error("Error al consumir la API:", error.message)
+            res.status(500).send("Error al buscar todas las tareas")
+        }
+    }
 }
 
 export default new TaskController()

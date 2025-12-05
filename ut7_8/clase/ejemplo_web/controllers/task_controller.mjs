@@ -8,18 +8,24 @@ class TaskController{
             }
         )
     }
-    async buscarPorId(req, res){
+    buscarPorId = async (req, res) => {
         const {id} = req.query
-        if(id.trim()){
-            const datos = await axios.get(`http://localhost:3000/buscar-por-id/${id}`)
+        
+        if(!id || !id.trim()){
+            return res.status(400).send("Falta el parámetro id")
+        }
+        
+        try {
+            const datos = await this.client.get(`/buscar-por-id/${id}`)
             if(datos.data){
-                console.log(datos)
+                console.log(datos.data)
                 res.render("tarea.ejs", {tarea: datos.data})
-            }else{
-                res.sendStatus(404)
+            } else {
+                res.status(404).send("No se encontró la tarea")
             }
-        }else{
-            res.sendStatus(304)
+        } catch (error) {
+            console.error("Error al consumir la API:", error.message)
+            res.status(500).send("Error al obtener la tarea")
         }
     }
 }

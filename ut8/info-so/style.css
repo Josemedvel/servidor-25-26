@@ -1,0 +1,13 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+.contenedor{
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr;
+}
+
+.contenedor *{
+    margin:15px;
+}

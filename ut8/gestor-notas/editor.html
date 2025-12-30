@@ -11,14 +11,17 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
-    <script type="module" defer src="renderer.mjs"></script>
-    <title>Gestor de notas</title>
+    <script type="module" defer src="renderer-editor.mjs"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Editor de notas</title>
 </head>
 <body>
-    <h1>Notitas</h1>
-    <div class="notas">
-
+    <h1>Escribe tu nota</h1>
+    <div id="new-note">
+        <input type="text" id="note-heading">
+        <hr>
+        <textarea id="note-text"></textarea>
+        <button id="save-note">Guardar</button>
     </div>
-    <button id="add-note">Añadir nota</button>
 </body>
 </html>

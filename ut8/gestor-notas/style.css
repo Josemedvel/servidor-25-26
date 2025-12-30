@@ -1,0 +1,20 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+#new-note{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+#note-heading{
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+
+#note-text{
+    min-height: 100px;
+    min-width: auto;
+}

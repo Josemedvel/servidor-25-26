@@ -18,8 +18,8 @@ const crearVentanaPrincipal = () => {
             sandbox: false,
         }
     })
-    mainWindow.loadFile("index.html")
-
+    conseguirNotas()
+    mainWindow.loadFile("index.html").then(() => mainWindow.webContents.send("notes-updated", notasArray))
     mainWindow.on("closed", ()=>{
     mainWindow = undefined
     if(editor){
@@ -50,6 +50,19 @@ const crearVentanaEditor = () => {
             mainWindow.webContents.send("notes-updated", notasArray)
         }
     })
+}
+
+const conseguirNotas = () => {
+    if(fs.existsSync(rutaNotas)){
+        const contenido = fs.readFileSync(rutaNotas, "utf8")
+        if(contenido.trim()){
+            try{
+                notasArray = JSON.parse(contenido)
+            }catch(error){
+                notasArray = []
+            }
+        }
+    }
 }
 
 

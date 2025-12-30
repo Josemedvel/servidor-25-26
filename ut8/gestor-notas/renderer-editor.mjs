@@ -5,6 +5,8 @@ const $notaH1 = $("#note-heading")
 const $notaTextArea = $("#note-text")
 
 
+
+
 $guardarNotaBtn.addEventListener("click", () => {
     const tituloNota = $notaH1.value
     const textoNota = $notaTextArea.value
@@ -14,3 +16,4 @@ $guardarNotaBtn.addEventListener("click", () => {
     }
     window.api.guardarNota({titulo:tituloNota, texto:textoNota})
 })
+

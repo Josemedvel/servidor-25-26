@@ -47,7 +47,7 @@ const crearVentanaEditor = () => {
     editor.on("closed", () => {
         editor = undefined
         if(mainWindow){
-            mainWindow.webContents.send("notes-updated", notas)
+            mainWindow.webContents.send("notes-updated", notasArray)
         }
     })
 }
@@ -78,8 +78,10 @@ ipcMain.on("save-note", (event, {titulo, texto}) => {
         texto:texto,
         fecha: new Date().toISOString()
     })
+    notasArray = notas
     fs.writeFileSync(rutaNotas, JSON.stringify(notas, null, 2), "utf8")
     if(editor && !editor.isDestroyed()){
         editor.close()
     }
+    mainWindow.webContents.send("notes-updated", notasArray)
 })
